@@ -21,11 +21,11 @@ var view = {
   },
   displayHit: function(location) {
     var cell = document.getElementById(location)
-	cell.setAttribute("class", "hit");
+    cell.setAttribute("class", "hit");
   },
   displayMiss: function(location) {
     var cell = document.getElementById(location)
-	cell.setAttribute("class", "miss");
+    cell.setAttribute("class", "miss");
   }
 };
 
@@ -84,16 +84,17 @@ var controller = {
   parseGuess: function(guess) {
     var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
     if (guess === null || guess.length !== 2) {
-      view.displayMiss("What are you doing? Be serious.");
+      view.displayMessage("What are you doing? Be serious. Range : A0-G6");
     } else {
       firstChar = guess.charAt(0);
-      var row = alphabet.indexOf(firstChar);
+      var upperFirstChar = firstChar.toUpperCase();
+      var row = alphabet.indexOf(upperFirstChar);
       var column = guess.charAt(1);
 
       if (isNaN(row) || isNaN(column)) {
-        view.displayMiss("Ooops!!! Get the map pal!!");
+        view.displayMessage("Ooops!!! Get the map pal!!");
       } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
-        alert("Oops, that's off the board!");
+        view.displayMessage("Oops, that's off the board!");
       } else {
         return row + column;
       }
