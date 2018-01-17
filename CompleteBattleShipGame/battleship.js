@@ -32,19 +32,19 @@ var view = {
 var model = {
 
   boardSize: 7,
-  numShips: 3,
+  numShips: 1,
   shipLength: 3,
   shipsSunk: 0,
   ships: [{
     locations: ["06", "16", "26"],
     hits: ["", "", ""]
-  }, {
+  }/*, {
     locations: ["24", "34", "44"],
     hits: ["", "", ""]
   }, {
     locations: ["10", "11", "12"],
     hits: ["", "", ""]
-  }],
+  }*/],
 
   isSunk: function(ship) {
     for (var i = 0; i < this.shipLength; i++) {
@@ -57,6 +57,9 @@ var model = {
 
 
   fire: function(guess) {
+	if(this.shipsSunk === this.numShips){
+		alert("Game Over. Kindly Reload");
+	}
     for (var i = 0; i < this.numShips; i++) {
       var ship = this.ships[i];
       var locations = ship.locations;
@@ -103,11 +106,21 @@ var controller = {
   },
   processGuess: function(guess) {
     var location = this.parseGuess(guess);
+	//var 
     if (location) {
       this.guess++;
       var hit = model.fire(location);
       if (hit && model.shipsSunk === model.numShips) {
-        view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+        view.displayMessage("You sank all my battleships, in " + this.guess + " guesses");
+		var grid = document.getElementsByTagName("td");
+		var hitCount = 0;
+		for(var i = 0; i < grid.length; i++){
+			if(grid[i].getAttribute("class") === "hit"){
+				hitCount++;
+			}
+		}
+		var accuracy = hitCount*100/this.guess;
+		setTimeout(function(){view.displayMessage("Accuracy:"+ accuracy + "%");},5000);
       }
     }
   }
