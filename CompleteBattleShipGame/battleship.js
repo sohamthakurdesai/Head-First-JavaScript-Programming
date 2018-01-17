@@ -33,11 +33,17 @@ var view = {
 
   },
   displayHit: function(location) {
-    var cell = document.getElementById(location)
+    var cell = document.getElementById(location);
+	if(cell.getAttribute("class") === "hit"){
+		alert("You have already hit it, why are you wasting the ammunition!!!");
+	}
     cell.setAttribute("class", "hit");
   },
   displayMiss: function(location) {
-    var cell = document.getElementById(location)
+    var cell = document.getElementById(location);
+	if(cell.getAttribute("class") === "miss"){
+		alert("Are you dumb!!!");
+	}
     cell.setAttribute("class", "miss");
   }
 };
@@ -161,7 +167,6 @@ var controller = {
   },
   processGuess: function(guess) {
     var location = this.parseGuess(guess);
-    //var 
     if (location) {
       this.guess++;
       var hit = model.fire(location);
