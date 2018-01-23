@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title> Image Guess </title>
+    <style>
+      body {
+        margin: 20px;
+      }
+
+    </style>
+    <script>
+      function init() {
+        var image = document.getElementById("zero");
+        image.onclick = function(event) {
+			event.target.src = "MonaLisaPartying.png";
+			};
+		//changeImage;
+		//image.onmousemove = changeImageAgain;
+		image.onmouseover = changeImageAgain;
+      };
+
+      window.onload = init;
+
+      /*function changeImage(event) {
+        event.target.src = "MonaLisaPartying.png";
+      };*/
+	  
+	  function changeImageAgain(event) {
+        event.target.src = "MonaLisa.png";
+      };
+
+    </script>
+  </head>
+
+  <body> <img id="zero" src="MonaLisa.png"/> </body>
+
+</html>
