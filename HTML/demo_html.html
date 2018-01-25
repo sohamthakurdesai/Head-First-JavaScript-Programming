@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function display(event){
+				var vis;
+				var animal = document.getElementById("animals");
+				if(event.innerHTML==="Hide"){
+					vis = "hidden";
+					animal.style.backgroundColor="red";
+					animal.style.color="white";
+				}else{
+					vis = "visible";
+					animal.style.backgroundColor="white";
+					animal.style.color="black";
+				}
+				var x = document.getElementsByClassName("beverages");
+				for(var i=0; i<x.length; i++){
+					x[i].style.visibility = vis;
+				}
+			};
+		</script>
+		<style>
+			table{
+				font-family:courier;
+				border-spacing: 1px;
+				font-size:20px;
+			}
+			th, td {
+				border: 5px solid red;
+				border-collapse:collapse;
+				background-color:blue;
+				color:white;
+				padding: 5px;
+			}
+			ul{
+				font-size:20px;
+				width:30%;
+				padding:5px;
+			}
+			ol{
+				font-size:20px;
+			}
+			div{
+				background-color:red;
+				color:white;
+				padding:5px;
+				font-size:20px;
+				width:30%;
+			}
+			.beverages{
+				font-size:25px;
+				font-style:italic;
+				background-color: tomato;
+				visibility:hidden;
+			}
+			iframe{
+				background-color: tomato;
+				border:2px solid black;
+			}
+			fieldset{
+				width:30%;
+				padding:5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Table Example<h1>
+		<table style="width:25;height:25">
+			<caption>The Table</caption>
+			<tr>
+				<th colspan="0">COLUMN1</th>
+				<th colspan="1">COLUMN2</th>
+				<th colspan="2">COLUMN3</th>
+			</tr>
+			<tr>
+				<td>A1</td>
+				<td>A2</td>
+				<td>A3</td>
+			</tr>
+			<tr>
+				<td>B1</td>
+				<td>B2</td>
+				<td>B3</td>
+			</tr>
+		</table>
+		<h2>List Example-1</h2>
+		<ul id="animals" style="list-style-type:circle">
+		  <li>Tiger</li>
+		  <li>Lion</li>
+		  <li>Elephant</li>
+		</ul>
+
+		<div id="1">
+			<h2>List Example-2</h2>
+			<button onclick="display(this)">Display</button>
+			<button onclick="display(this)">Hide</button>
+			<h3 class="beverages">This is an ordered list of beverages:</h3>
+			<ol type="A">
+			  <li class="beverages">Coffee</li>
+			  <dd>- black hot drink</dd>
+			  <li class="beverages">Tea</li>
+			  <dd>- favourite drink</dd>
+			  <li class="beverages">Milk</li>
+			  <dd>- healthy drink</dd>
+			</ol>
+		</div>
+		<br>
+		<form action="/TRAINING/GIT/Head-First-JavaScript-Programming/HTML/demo_iframe.htm" target="localFrame" name="myform" method="get" onsubmit="manipulateForm()">
+		  <fieldset>
+			  <legend>Personal information:</legend>
+			  First name:<br>
+			  <input type="text" name="firstname" autofocus><br>
+			  Last name:<br>
+			  <input type="text" name="lastname"><br>
+			  <input type="radio" name="gender" value="male" checked> Male<br>
+			  <input type="radio" name="gender" value="female"> Female<br>
+			  <input type="radio" name="gender" value="other" disabled> Other<br>
+			  <input type="submit" value="Submit"><br>
+			  Car Owned:
+			  <select name="cars">
+				  <option value="volvo">Volvo</option>
+				  <option value="saab" selected>Saab</option>
+				  <option value="fiat">Fiat</option>
+				  <option value="audi">Audi</option>
+			  </select>
+		  </fieldset>
+		</form>
+		<iframe name="localFrame" src="demo_iframe.htm" height="200" width="500">
+		</iframe>
+	</body>
+</html>
