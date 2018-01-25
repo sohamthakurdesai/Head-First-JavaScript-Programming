@@ -3,16 +3,13 @@
 <head>
 <script>
 	window.onload=function(){
-		alert("Submit button pressed: inside demo_iframe.htm:");
+		var iframeString = document.getElementById("1").innerHTML;
+		var urlParams = new URLSearchParams(window.location.search);	
+
+		if(urlParams.has("firstname")){
+			document.getElementById("1").innerHTML = urlParams.get("firstname") + " " + urlParams.get("lastname") +":" + iframeString;
+		}
 	}
-	/*function manipulateForm(){
-		var header1 = document.getElementById("1");
-		var firstname = document.forms["myform"]["firstname"].value;
-		//document.getElementsByName("firstname");
-		var lastname = document.getElementsByName("lastname");
-		var message = header1.innerHTML;
-		header1.innerHTML = firstname+" "+lastname[0]+":"+message
-	}*/
 </script>
 </head>
 <h1 id="1">You are in an iframe<h2>
